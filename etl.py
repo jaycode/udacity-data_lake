@@ -64,6 +64,16 @@ def process_song_data(spark, input_data, output_data):
 
 
 def process_log_data(spark, input_data, output_data):
+    """Process song data from given input_path and store it at output_data as parquet files.
+    
+    Args:
+        spark(pyspark.sql.SparkSession): SparkSession object
+        input_data(string): Path to input data directory. End with '/' e.g. 'data/log/'
+        output_data(string): Path to output data directory. End with '/' e.g. 'data/log/'
+    Returns:
+        None
+    """
+    
     # get filepath to log data file
     log_data = input_data
 
