@@ -138,8 +138,9 @@ def process_log_data(spark, input_data, output_data):
                             col('userAgent').alias('user_agent')) \
                         .withColumn('songplay_id', row_number().over(w))
 
-    # write songplays table to parquet files partitioned by year and month
-    songplays_table
+    # write songplays table to parquet files
+    songplays_table_path = "{}{}".format(output_data, 'songplays.parquet')
+    songplays_table.write.mode('overwrite').parquet(songplays_table_path)
 
 
 def main():
